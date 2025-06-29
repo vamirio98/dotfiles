@@ -7,7 +7,7 @@
 # ```
 # [boot]
 # systemd=true
-# command="bash /boot.sh > /boot.log"
+# command="bash /boot.sh &> /boot.log"
 # ```
 
 # General values
