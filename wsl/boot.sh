@@ -13,20 +13,24 @@
 # General values
 username=vamirio
 distribution="Fedora"
-vhd_file_path="D:/Tools/vm/wsl/user.vhdx"
 
 # Timeout and interval in seconds
 timeout=5
 interval=1
 
+# vhd
+vhd_file_path=("D:/Tools/vm/wsl/user.vhdx")
+
 # Drive to check and mount
-target_drive="/dev/sde"
+target_drive=("/dev/sde")
 
 # Mount point
-mount_point="/home"
+mount_point=("/home")
 
 # Execute mount
-/mnt/c/Users/$username/AppData/Local/Microsoft/WindowsApps/wsl.exe -d $distribution --mount --vhd $vhd_file_path --bare
+for vhd in "${vhd_file_path[@]}"; do
+	/mnt/c/Users/$username/AppData/Local/Microsoft/WindowsApps/wsl.exe -d $distribution --mount --vhd $vhd --bare
+done
 
 # Initialize elapsed time counter
 elapsed=0
@@ -44,7 +48,11 @@ while [ ! -e $target_drive ]; do
 done
 
 # Mount the target drive
-mount $target_drive $mount_point
+for (( i = 0; i < ${#target_drive[@]}; i++ )); do
+	mount ${target_drive[${i}]} ${mount_point[${i}]}
+done
 
 # Check the mounted target drive
-mount -l | grep $target_drive
+for dirve in "${target_drive[@]}"; do
+	mount -l | grep ${target_drive[${i}]}
+done
