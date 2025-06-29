@@ -36,13 +36,25 @@ done
 elapsed=0
 
 # Wait for the target drive to be ready
-while [ ! -e $target_drive ]; do
+while true; do
+	all_drive_ready=true
+	for drive in "${target_drive[@]}"; do
+		if [ ! -e "${drive}" ]; then
+			all_drive_ready=false
+			break
+		fi
+	done
+
+	if [ "${all_drive_ready}" == true ]; then
+		break
+	fi
+
     if [ $elapsed -ge $timeout ]; then
-        echo "Timed out waiting for $target_drive to be ready."
+        echo "Timed out waiting for "$drive" to be ready."
         exit 1
     fi
 
-    echo "Waiting for $target_drive to be ready..."
+    echo "Waiting for "$drive" to be ready..."
     sleep $interval
     elapsed=$((elapsed + interval))
 done
@@ -53,6 +65,6 @@ for (( i = 0; i < ${#target_drive[@]}; i++ )); do
 done
 
 # Check the mounted target drive
-for dirve in "${target_drive[@]}"; do
-	mount -l | grep ${target_drive[${i}]}
+for drive in "${target_drive[@]}"; do
+	mount -l | grep ${drive}
 done
