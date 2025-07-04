@@ -125,7 +125,7 @@ end
 conf.launch_menu = launch_menu
 -- }}} launch program --
 
-conf.enable_scroll_bar = true
+conf.enable_scroll_bar = false
 
 -- }}} ui --
 
