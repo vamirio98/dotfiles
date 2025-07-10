@@ -166,7 +166,10 @@ end
 
 -- }}} keymap --
 
+-- misc {{{ --
+conf.audible_bell = "Disabled"
 conf.use_ime = true
 conf.use_dead_keys = false
+-- }}} misc --
 
 return conf
