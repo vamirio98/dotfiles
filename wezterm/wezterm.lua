@@ -93,7 +93,8 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   -- wsl
   table.insert(launch_menu, {
     label = 'fedora',
-    args = { 'wsl.exe', '-d', 'fedora', '--cd', '~' },
+    -- args = { 'wsl.exe', '-d', 'fedora', '--cd', '~' },
+    args = { 'ssh', '192.168.1.2' },
   })
 
   -- visual studio {{{ --
