@@ -43,7 +43,8 @@ function prompt
 
 	# Decorate the CMD Prompt
 	$gitBranch = GetGitBranch
-	Write-Host ( $( if ([string]::IsNullOrEmpty($gitBranch)) { "" } else { "  $gitBranch " } ) ) -BackgroundColor Cyan
+	Write-Host ( $( if ([string]::IsNullOrEmpty($gitBranch)) { "" } else { "  $gitBranch ☰ " } ) ) -BackgroundColor Cyan -NoNewlin
+	Write-Host ""  # otherwise the 'Cyan' color above will append to the following line after execute any command
 	Write-Host "$env:username@$(hostname) " -ForegroundColor Green -NoNewline
 	Write-Host "$pwd " -ForegroundColor Blue -NoNewline
 	$elapsedTime = CalElapsedTime
