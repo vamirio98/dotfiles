@@ -20,8 +20,8 @@ conf.font = wezterm.font_with_fallback({
 
 -- tab bar {{{ --
 -- https://wezterm.org/config/appearance.html#tab-bar-appearance-colors
-conf.tab_bar_at_bottom = true
-conf.use_fancy_tab_bar = true
+conf.tab_bar_at_bottom = false
+conf.use_fancy_tab_bar = false
 
 -- tab title {{{ --
 ---@param s string
