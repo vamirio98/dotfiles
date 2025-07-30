@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# from https://unix.stackexchange.com/a/124409
+
 color=16;
 
 while [ $color -lt 245 ]; do
